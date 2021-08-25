@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Dev Skills</title>
+</head>
+<body>
+  <h1>DevSkills</h1>
+  <% if(error) { %>
+      <h2><%= error %></h2>
+    <% } %>
+    <ul>
+      <% devskills.forEach(function(devskill) { %>
+        <li>
+          <form action="/devskills/<%= devskill._id%>?_method=DELETE" class="delete-form" method="POST">
+            <button type="submit">X</button>
+          </form>
+          <a href="devskills/<%= devskill._id %> "><%= devskill.text%></a>
+            - 
+          <%= devskill.mastered ? 'mastered' : 'needs work' %>
+        </li>
+      <% }) %>
+    </ul>
+    <a href="/devskills/new"><h2>Add New skill.</h2></a>
+</body>
+</html>
